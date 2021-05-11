@@ -3,41 +3,52 @@
       
 <head>
     <title>
-        Lancamento de dados (PHP)
+        Lançamento de dados (PHP)
     </title>
 </head>
   
 <body style="text-align:center;">
       
     <h1 style="color:red;">
-        Lancamento de dados
+        Lançamento de dados
     </h1>
       
     <h4>
-        Aperte o botao para lancar os dados
+        Aperte o botão para lançar os dados
     </h4>
 
     <form method="post">
-        <input type="submit" name="button"
-                value="Button"/>
+        <input type="submit" name="lancar"
+                value="Lançar"/>
 
     </form>
     
     <?php
       
-        if(isset($_POST['button'])) {
+        if(isset($_POST['lancar'])) {
+            $dado1 = rand(1,6);
+            $dado2 = rand(1,6);
+            $dado3 = rand(1,6);
+            $dado4 = rand(1,6);
+            $soma1 = $dado1 + $dado2;
+            $soma2 = $dado3 + $dado4;
+            if($soma1 > $soma2){
+                $vencedor = 'Jogador';
+            }elseif($soma1 == $soma2){
+                $vencedor = 'Empate';
+            }else{
+                $vencedor = 'Cpu';
+            }
             echo "<br>";
-            echo "Somatorio dos seus 2 dados:<br>";
-            echo "<img src='dice_Faces1_top.png' >";
-            echo "<img src='dice_Faces2_top.png' ><br>";
-            echo "Somatorio dos 2 dados da cpu:<br>";
-            echo "<img src='dice_Faces3_top.png' >";
-            echo "<img src='dice_Faces4_top.png' ><br>";
-            echo "Vencedor:";
+            echo "Somatório dos 2 dados do jogador: $soma1<br>";
+            echo "<img src='dice_Faces".$dado1."_top.png' >";
+            echo "<img src='dice_Faces".$dado2."_top.png' ><br>";
+            echo "Somatório dos 2 dados da cpu: $soma2<br>";
+            echo "<img src='dice_Faces".$dado3."_top.png' >";
+            echo "<img src='dice_Faces".$dado4."_top.png' ><br>";
+            echo "Vencedor: $vencedor";
         }
     ?>
-      
-
     
 </head>
   
